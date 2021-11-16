@@ -1,0 +1,24 @@
+<fieldset>
+  <legend class='text-center py-3 fs-1'>New Donation</legend>
+
+  <!-- charity name -->
+  <div class='form-group'>
+    <label class='p-4 fs-4' for="charity-name">Charity Name</label><br>
+    <input class='form-control' id='charity-name' type="text" name='charity_name' value='{{donation.charity_name}}'>
+  </div>
+  <!-- charity description -->
+  <div class='form-group'>
+    <label class='p-4 fs-4' for="charity-description">Charity description</label><br>
+    <input class='form-control p-3' id='charity-description' type="text" name='charity_description' value='{{donation.charity_description}}'>
+  </div>
+  <!-- donation amount -->
+  <div class='form-group'>
+    <label class='p-4 fs-4' for="donation-amount">Donation Amount</label><br>
+    <input class='form-control' id='donation-amount' type="text" name='donation_amount' value='{{donation.donation_amount}}'>
+  </div>
+  <!-- date of donation -->
+  <div class='form-group'>
+    <label class='p-4 fs-4' for="donation-amount">Date of Donation</label><br>
+    <input class='form-control' id='donation-amount' type="text" name='donation_date' value='{{donation.donation_date}}'>
+  </div>
+</fieldset>

@@ -1,0 +1,23 @@
+<html>
+  <style>
+    h2 a {color: green;}
+  </style>
+</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="py-5 text-center">Donations</h1>
+
+
+
+<div class='row border border-success border-5'>
+  {% for donation in donations %}
+    <div class='card' style='width: 100rem;'>
+      <h2><a href='/donations/{{ donation._id }}'>{{ donation.charity_name }}</a></h2>
+      <p>{{ donation.charity_description }}</p>
+      <h4>{{ donation.donation_amount}}</h4>
+      <p>{{donation.donation_date}}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
