@@ -9,10 +9,14 @@ db = client.CharityTracker
 # client = MongoClient(uri)
 # db = client.get_default_database()
 
-# resources
+# database resources
 donations = db.donations
+charities = db.charities
 
 app = Flask(__name__)
+
+# ---------------------------------------------------------------------------
+# Donations routes
 
 # root route - GET
 @app.route('/')
@@ -36,8 +40,7 @@ def donations_new():
 def donation_submit():
   donation = {
     'charity_name': request.form.get('charity_name'),
-    'charity_description': request.form.get('charity_description'),
-    'donation_amount': request.form.get('donation_amount'),
+    'donation_amount': '$' + request.form.get('donation_amount'),
     'donation_date': request.form.get('donation_date')
   }
   # add donation to db
@@ -55,8 +58,7 @@ def donations_edit(donation_id):
 def donations_update(donation_id):
   updated_donation = {
     'charity_name': request.form.get('charity_name'),
-    'charity_description': request.form.get('charity_description'),
-    'donation_amount': '$' + request.form.get('donation_amount'),
+    'donation_amount': request.form.get('donation_amount'),
     'donation_date': request.form.get('donation_date')
   }
   # set the former donation to the updated donation
@@ -72,6 +74,42 @@ def donations_update(donation_id):
 def donations_delete(donation_id):
   donations.delete_one({'_id': ObjectId(donation_id)})
   return redirect(url_for('donations_index'))
+
+# ---------------------------------------------------------------------
+# charities routes
+
+# charities index route
+@app.route('/charities')
+def charities_index():
+  return render_template('charities_index.html', charities=charities.find())
+
+# show (single) charity profile route
+@app.route('/charities/<charity_name>')
+def charity_profile(charity_name):
+  # show one charity
+  charity = charities.find_one({'name': charity_name})
+  return render_template('charity_profile.html', charity=charity, donations = donations.find({'charity_name': charity_name}))
+
+# edit single charity route 
+@app.route('/charities/<charity_name>/edit')
+def charity_edit(charity_name):
+  charity = charities.find_one({'name': charity_name})
+  return render_template('charity_edit.html', charity=charity, title='Edit Charity')
+
+# update charity route - POST
+@app.route('/charities/<charity_name>', methods=['POST'])
+def charities_update(charity_name):
+  updated_charity = {
+    'name': request.form.get('charity_name'),
+    'description': request.form.get('charity_description')
+  }
+  charities.update_one(
+    {'name': charity_name},
+    {'$set': updated_charity}
+  )
+  return redirect(url_for('charity_profile', charity_name=updated_charity['name']))
+
+
 
 if __name__ == '__main__':
   app.run(debug=True)  

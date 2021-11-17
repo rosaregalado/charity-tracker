@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class='row'>
-    <div class='col-sm-6 col-sm-offset-3'>
-        <form method='POST' action='/donations'>
-            {% include 'partials/donations_form.html' %}
-            <!-- BUTTON -->
-            <div class='form-group py-5'>
-                <button class='btn btn-primary' type='submit'>Save Donation</button>
-            </div>
+  <div class="container d-flex flex-column justify-content-center align-items-center " style="height: 90vh;">
+    <div class="card rounded p-3" style="width: 35rem; height: 45rem; background-color: black;">
+      <div class="card-body d-flex flex-column justify-content-around">
+        <form action="/donations" method="POST" class="d-flex flex-column justify-content-around" style="height: 100%">
+          
+          {% include 'partials/donations_form.html' %}
+          
         </form>
+      </div>
     </div>
-</div>
+  </div>
 {% endblock %}
-
