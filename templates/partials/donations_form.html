@@ -4,26 +4,25 @@
   <!-- charity name -->
   <div class='form-group px-5 pb-4'>
     <label class='p-3 fs-4' for="charity-name">Name of Charity</label><br>
-    <input style='width: 25rem;' class='form-control justify-content align-items-center' id='charity-name' type="text" name='charity_name' value='{{donation.charity_name}}'>
+    <input placeholder='ex: Habitat for Humanity' style='width: 25rem;' class='form-control justify-content align-items-center' id='charity-name' type="text" name='charity_name' value='{{donation.charity_name}}' required/>
   </div>
   <!-- donation amount -->
   <div class='form-group px-5 pb-4'>
     <label class='p-3 fs-4' for="donation-amount">Donation Amount</label><br>
     <div class='d-flex'>
-      <input placeholder='$' style='width: 25rem;' class='form-control' id='donation-amount' type="text" name='donation_amount' value='{{donation.donation_amount}}'>
+      <input placeholder='$' style='width: 25rem;' class='form-control' id='donation-amount' type="text" name='donation_amount' value='{{donation.donation_amount}}' required/>
     </div>
   </div>
   <!-- date of donation -->
   <div class='form-group px-5 pb-5'>
     <label class='p-3 fs-4' for="donation-amount">Date of Donation</label><br>
-    <input style='width: 25rem;' class='form-control' id='donation-amount' type="text" name='donation_date' value='{{donation.donation_date}}'>
+    <input style='width: 25rem;' class='form-control' id='donation-amount' type="date" name='donation_date' value='{{donation.donation_date}}'required/>
   </div>
-   <!-- SUBMIT and CANCEL buttons-->
-   <div class="form-group align-self-center py-5">
-     <button type="submit" class="btn btn-danger"><a style="width: 25rem; text-decoration: none; color: white;" href="/">Cancel</a></button>
+  <!-- SUBMIT and CANCEL buttons-->
+  <div class="form-group align-self-center py-5">
+    <button type="submit" class="btn btn-danger"><a style="width: 25rem; text-decoration: none; color: white;" href="/">Cancel</a></button>
     <button type="submit" class="btn btn-success">Submit</button>
   </div>
-  
 </fieldset>
 
 style=""

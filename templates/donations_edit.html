@@ -2,15 +2,15 @@
 
 {% block content %}
 <div class='row'>
-  <div class='col-sm-6 col-sm-offset-3'>
-      <form method='POST' action='/donations/{{donation._id}}'>
-          <input type='hidden' name='_method' value='PUT'/>
-          {% include 'partials/donations_form.html' %}
-          <!-- BUTTON -->
-          <div class='form-group py-5'>
-              <button class='btn btn-success' type='submit'>Save Donation</button>
-          </div>
-      </form>
-  </div>
+	<div class='col-sm-6 col-sm-offset-3'>
+		<form method='POST' action='/donations/{{donation._id}}'>
+				<input type='hidden' name='_method' value='PUT'/>
+					{% include 'partials/donations_form.html' %}
+					<!-- BUTTON -->
+					<div class='form-group py-5'>
+						<button class='btn btn-success' type='submit'>Save Donation</button>
+					</div>
+		</form>
+	</div>
 </div>
 {% endblock %}
