@@ -10,8 +10,9 @@
 <div class='card' style='width: 25rem; align-items: center;'>
   <div class='p-3'>
     <h1>{{ donation.charity_name }}</h1>
-    <h4>{{ donation.donation_amount}}</h4>
-    <p>{{donation.donation_date}}</p>
+    <h4>{{ donation.donation_amount }}</h4>
+    <p>{{ donation.donation_date }}</p>
+    <p>{{ donation.note }}</p>
     
     <p><a href='/donations/{{ donation._id }}/edit'>Edit</a></p>
     <p><form method='POST' action='/donations/{{ donation._id }}/delete'>

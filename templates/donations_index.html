@@ -14,7 +14,7 @@
     <tbody>
       {% for donation in donations%}
       <tr class='align-middle'>
-        <td><h3><a class='text-decoration-none text-dark' href='/donations/{{ donation._id }}'>{{ donation.charity_name }}</a></h3></td>
+        <td><h4><a class='text-decoration-none text-primary' href='/donations/{{ donation._id }}'>{{ donation.charity_name }}</a></h4></td>
         <td>{{ donation.donation_amount }}</td>
         <td>{{ donation.donation_date }}</td>
       </tr>

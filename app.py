@@ -3,11 +3,11 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
-client = MongoClient()
-db = client.CharityTracker
-# uri = os.environ.get('MONGODB_URI')
-# client = MongoClient(uri)
-# db = client.get_default_database()
+# client = MongoClient()
+# db = client.CharityTracker
+uri = os.environ.get('MONGODB_URI')
+client = MongoClient(uri)
+db = client.get_default_database()
 
 # database resources
 donations = db.donations
@@ -41,7 +41,8 @@ def donation_submit():
   donation = {
     'charity_name': request.form.get('charity_name'),
     'donation_amount': '$' + request.form.get('donation_amount'),
-    'donation_date': request.form.get('donation_date')
+    'donation_date': request.form.get('donation_date'),
+    'note': request.form.get('note')
   }
   # add donation to db
   donation_id = donations.insert_one(donation).inserted_id
@@ -59,7 +60,9 @@ def donations_update(donation_id):
   updated_donation = {
     'charity_name': request.form.get('charity_name'),
     'donation_amount': request.form.get('donation_amount'),
-    'donation_date': request.form.get('donation_date')
+    'donation_date': request.form.get('donation_date'),
+    'note': request.form.get('note')
+
   }
   # set the former donation to the updated donation
   donations.update_one(
