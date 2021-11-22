@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/">Home</a>
+
+<h1>{{ charity.name }}</h1>
+<h2 class='mb-3 mt-3'>Charity Description</h2>
+<p>{{ charity.description }}</p>
+
+
+  <form method='POST' action='/charities/{{charity_name}}/delete'>
+      <button class="btn btn-primary" type='submit'>Delete Charity</button>
+  </form>
+
+{% endblock %}

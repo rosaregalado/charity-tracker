@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/charities'>
+  <fieldset>
+    <legend class="mt-4 mb-4">New Charity</legend>
+
+    <p>
+        <label for='name'>Charity Name</label><br>
+        <input type='text' name='charity_name' class="form-control"/>
+    </p>
+ 
+    <p>
+        <label for='description'>Description</label>
+        <textarea type='text' name='charity_description' class='form-control'></textarea>
+    </p>
+</fieldset>
+
+<!-- BUTTON -->
+<p>
+  <button type="submit" class="btn btn-danger"><a style="width: 25rem; text-decoration: none; color: white;" href="/">Cancel</a></button>
+  <button type="submit" class="btn btn-primary"><a style="width: 25rem; text-decoration: none; color: white;" href="/charities">Save Charity</a></button>
+</p>
+</form>
+{% endblock %}

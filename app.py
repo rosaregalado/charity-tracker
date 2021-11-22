@@ -3,11 +3,11 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
-# client = MongoClient()
-# db = client.CharityTracker
+
 uri = os.environ.get('MONGODB_URI')
 client = MongoClient(uri)
-db = client.get_default_database()
+# db = client.get_default_database()
+db = client.CharityTracker
 
 # database resources
 donations = db.donations
@@ -86,12 +86,26 @@ def donations_delete(donation_id):
 def charities_index():
   return render_template('charities_index.html', charities=charities.find())
 
+@app.route('/charities/new', methods=['POST'])
+def charities_new():
+  return render_template('charities_new.html')
+
+# submit charity route - POST
+@app.route('/charities', methods=['POST'])
+def charity_submit():
+  charity = {
+    'charity_name': request.form.get('charity_name'),
+    'charity_description': request.form.get('charity_description')
+  }
+  # add charity to db
+  charities.insert_one(charity)
+  return redirect(url_for('charities_index'))
+
 # show (single) charity profile route
 @app.route('/charities/<charity_name>')
 def charity_profile(charity_name):
-  # show one charity
   charity = charities.find_one({'name': charity_name})
-  return render_template('charity_profile.html', charity=charity, donations = donations.find({'charity_name': charity_name}))
+  return render_template('charities_new.html', charity=charity, donations = donations.find({'charity_name': charity_name}))
 
 # edit single charity route 
 @app.route('/charities/<charity_name>/edit')
@@ -110,7 +124,7 @@ def charities_update(charity_name):
     {'name': charity_name},
     {'$set': updated_charity}
   )
-  return redirect(url_for('charity_profile', charity_name=updated_charity['name']))
+  return redirect(url_for('charity_show', charity_name=updated_charity['name']))
 
 
 
