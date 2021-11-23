@@ -1,6 +1,10 @@
+ABOUT:
 This project is a charity tracker created to track all charity donations made by a user and saves them to a database.
 
+--------------------------------------------------------------------------------------------------------
+
 Wireframes:
+
 
 Donations Dashboard
 
@@ -14,5 +18,6 @@ New Donation
 
 
 ERD:
+
 
 ![ERD Diagram](ERD-diagram.png)
