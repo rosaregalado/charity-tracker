@@ -1,6 +1,7 @@
 ABOUT:
 This project is a charity tracker created to track all charity donations made by a user and saves them to a database.
 
+Heroku live app: https://charity-tracker-rosa.herokuapp.com/
 --------------------------------------------------------------------------------------------------------
 
 Wireframes:
