@@ -86,7 +86,7 @@ def donations_delete(donation_id):
 def charities_index():
   return render_template('charities_index.html', charities=charities.find())
 
-@app.route('/charities/new', methods=['POST'])
+@app.route('/charities/new')
 def charities_new():
   return render_template('charities_new.html')
 
