@@ -124,7 +124,7 @@ def charities_update(charity_name):
     {'name': charity_name},
     {'$set': updated_charity}
   )
-  return redirect(url_for('charity_show', charity_name=updated_charity['name']))
+  return redirect(url_for('charities_index', charity_name=updated_charity['name']))
 
 
 

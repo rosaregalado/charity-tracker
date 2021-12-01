@@ -4,6 +4,18 @@
 <div class='container d-flex flex-column justify-content-center align-items-center p-5'>
   <h2>Charities</h2>
   <a href='/charities/new' class='btn btn-primary'>Add Charity</a>
+
+  {% for charity in charities %}
+  <h1>{{ charity.name }}</h1>
+  <h2 class='mb-3 mt-3'>Charity Description</h2>
+  <p>{{ charity.description }}</p>
+
+
+  <form method='POST' action='/charities/{{charity_name}}/delete'>
+      <button class="btn btn-primary" type='submit'>Delete Charity</button>
+  </form>
+
+  {% endfor %}
 </div>
 
 {% endblock %}
