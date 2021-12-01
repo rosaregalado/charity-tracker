@@ -21,9 +21,9 @@
         <td>{{ charity.charity_name }}</td>
         <td>{{ charity.charity_description }}</td>
         <td>
-          <form method='POST' action='/charities/{{charity.charity_name}}/delete'>
+          <a href='/charities/{{charity_name}}/delete'>
           <button class="btn btn-danger" type='submit'>Delete Charity</button>
-          </form>
+          </a>
         </td>
       </tr>
       {% endfor %}  
