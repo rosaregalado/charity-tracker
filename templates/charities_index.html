@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class='container d-flex flex-column justify-content-center align-items-center p-5'>
-  <h2 class="m-5">Charities</h2>
-  <a href='/charities/new' class='btn btn-primary'>Add Charity</a>
+  <h2 class="m-3">Charities</h2>
+  <a href='/charities/new' class='btn btn-primary my-3'>Add Charity</a>
 
   <div>
     <table class="table table-striped table-hover">
@@ -11,6 +11,7 @@
         <tr>
           <th scope="col">Charity Name</th>
           <th scope="col">Description</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,11 @@
         <tr class='align-middle'>
           <td>{{ charity.charity_name }}</td>
           <td>{{ charity.charity_description }}</td>
+          <td>
+            <form method='POST' action='/charities/{{charity_name}}/delete'>
+            <button class="btn btn-danger" type='submit'>Delete Charity</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}  
       </tbody>

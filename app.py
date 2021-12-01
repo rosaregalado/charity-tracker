@@ -107,11 +107,11 @@ def charity_profile(charity_name):
   charity = charities.find_one({'name': charity_name})
   return render_template('charities_new.html', charity=charity, donations = donations.find({'charity_name': charity_name}))
 
-# edit single charity route 
-@app.route('/charities/<charity_name>/edit')
-def charity_edit(charity_name):
-  charity = charities.find_one({'name': charity_name})
-  return render_template('charity_edit.html', charity=charity, title='Edit Charity')
+# # edit single charity route 
+# @app.route('/charities/<charity_name>/edit')
+# def charity_edit(charity_name):
+#   charity = charities.find_one({'name': charity_name})
+#   return render_template('charity_edit.html', charity=charity, title='Edit Charity')
 
 # update charity route - POST
 @app.route('/charities/<charity_name>', methods=['POST'])
@@ -124,7 +124,7 @@ def charities_update(charity_name):
     {'name': charity_name},
     {'$set': updated_charity}
   )
-  return redirect(url_for('charities_index', charity_name=updated_charity['name']))
+  return redirect(url_for('charity_show', charity_name=updated_charity['name']))
 
 # delete charity
 @app.route('/charities/<charity_name>/delete', methods=['POST'])
