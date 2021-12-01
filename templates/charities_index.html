@@ -2,10 +2,33 @@
 
 {% block content %}
 <div class='container d-flex flex-column justify-content-center align-items-center p-5'>
-  <h2>Charities</h2>
+  <h2 class="m-5">Charities</h2>
   <a href='/charities/new' class='btn btn-primary'>Add Charity</a>
 
-  {% for charity in charities %}
+  <div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Charity Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for charity in charities %}
+        <tr class='align-middle'>
+          <td>{{ donation.charity_name }}</td>
+          <td>{{ donation.donation_amount }}</td>
+        </tr>
+        {% endfor %}  
+      </tbody>
+    </table>
+  </div>
+  
+  
+  
+  
+  
+  <!-- {% for charity in charities %}
   <h1>{{ charity.charity_name }}</h1>
   <p>{{ charity.charity_description }}</p>
 
@@ -14,7 +37,7 @@
       <button class="btn btn-danger" type='submit'>Delete Charity</button>
   </form>
 
-  {% endfor %}
+  {% endfor %} -->
 </div>
 
 {% endblock %}

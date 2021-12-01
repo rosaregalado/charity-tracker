@@ -126,7 +126,11 @@ def charities_update(charity_name):
   )
   return redirect(url_for('charities_index', charity_name=updated_charity['name']))
 
-
+# delete charity
+@app.route('/charities/<charity_name>/delete', methods=['POST'])
+def charity_delete(charity_name):
+  charities.delete_one({{'name': charity_name}})
+  return redirect(url_for('charities_index'))
 
 if __name__ == '__main__':
   app.run(debug=True)  
