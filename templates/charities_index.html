@@ -6,9 +6,9 @@
   <a href='/charities/new' class='btn btn-primary'>Add Charity</a>
 
   {% for charity in charities %}
-  <h1>{{ charity.name }}</h1>
+  <h1>{{ charity.charity_name }}</h1>
   <h2 class='mb-3 mt-3'>Charity Description</h2>
-  <p>{{ charity.description }}</p>
+  <p>{{ charity.charity_description }}</p>
 
 
   <form method='POST' action='/charities/{{charity_name}}/delete'>
