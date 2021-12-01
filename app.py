@@ -117,8 +117,8 @@ def charity_profile(charity_name):
 @app.route('/charities/<charity_name>', methods=['POST'])
 def charities_update(charity_name):
   updated_charity = {
-    'name': request.form.get('charity_name'),
-    'description': request.form.get('charity_description')
+    'charity_name': request.form.get('charity_name'),
+    'charity_description': request.form.get('charity_description')
   }
   charities.update_one(
     {'name': charity_name},
@@ -129,7 +129,7 @@ def charities_update(charity_name):
 # delete charity
 @app.route('/charities/<charity_name>/delete', methods=['POST'])
 def charity_delete(charity_name):
-  charities.delete_one({'_id': ObjectId(charity_name)})
+  charities.delete_one({'charity_name': charity_name})
   return redirect(url_for('charities_index'))
 
 if __name__ == '__main__':
